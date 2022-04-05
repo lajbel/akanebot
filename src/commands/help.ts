@@ -4,7 +4,7 @@ import { AkaneCommand } from '../types/command.ts';
 const cmd: AkaneCommand = {
 	name: 'help',
 	description: 'Get info and help about me and my features',
-	run: (interaction: Interaction, dialogue: string[]) => {
+	run: (interaction, dialogue) => {
 		interaction.respond({
 			embeds: [{
 				color: 0x80e1ff,

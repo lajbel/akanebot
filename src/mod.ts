@@ -1,23 +1,14 @@
-import { Client, config, GatewayIntents, Message } from '../deps.ts';
+import { Client, config, GatewayIntents, Message } from "../deps.ts";
 
 export const client = new Client();
 export const commands = new Map();
 
-client.on('messageCreate', (msg: Message): void => {
-	if (msg.content === '!ping') {
-		msg.channel.send(`Pong!`);
-	}
-});
+client.connect(Deno.env.get("DISCORD_TOKEN") || config().DISCORD_TOKEN, [
+	GatewayIntents.GUILDS,
+	GatewayIntents.GUILD_MESSAGES,
+]);
 
-client.connect(
-	Deno.env.get('DISCORD_TOKEN') || config().DISCORD_TOKEN,
-	[
-		GatewayIntents.GUILDS,
-		GatewayIntents.GUILD_MESSAGES,
-	],
-);
-
-for await (const file of Deno.readDir('src/events')) {
+for await (const file of Deno.readDir("src/events")) {
 	import(`./events/${file.name}`).then((mod) => {
 		mod.default();
 
@@ -25,15 +16,19 @@ for await (const file of Deno.readDir('src/events')) {
 	});
 }
 
-for await (const file of Deno.readDir('src/commands/')) {
+for await (const file of Deno.readDir("src/commands/")) {
 	import(`./commands/${file.name}`).then((mod) => {
 		const command = mod.default;
 
-		client.interactions.commands.create({
-			name: command.name,
-			description: command.description,
-			options: command.options,
-		}, '951299637782933515');
+		client.interactions.commands.create(
+			{
+				name: command.name,
+				type: command.type,
+				description: command.description,
+				options: command.options,
+			},
+			"951299637782933515"
+		);
 
 		commands.set(command.name, command);
 
