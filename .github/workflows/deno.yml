@@ -19,4 +19,4 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "akane-bot"
-          entrypoint: "./main.ts" # TODO(lajbel): update
+          entrypoint: "src/mod.ts" 
