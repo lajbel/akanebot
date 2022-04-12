@@ -9,15 +9,8 @@ export default () =>
 
 			if (!cmd) return;
 
-			const dialogue = (
-				await import(
-					`../lang/es/${interaction.data.name.toLowerCase()}.json`,
-					{
-						assert: { type: "json" },
-					}
-				)
-			).default;
-
+			const dialogue = ( await import(`../lang/es/${interaction.data.name.toLowerCase()}.ts`)).default;
+			
 			cmd.run(interaction, dialogue);
 		}
 	});

@@ -1,0 +1,3 @@
+[
+	"Necesitas seleccionar un lenguaje.",
+]
