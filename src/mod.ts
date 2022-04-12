@@ -35,3 +35,7 @@ for await (const file of Deno.readDir("src/commands/")) {
 		console.log(`Command loaded -> ${command.name}`);
 	});
 }
+
+setInterval(() => {
+	fetch("http://akanebot.lajbel.repl.co");
+}, 5);
