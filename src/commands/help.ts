@@ -26,6 +26,12 @@ const cmd: AkaneCommand = {
 							label: dialogue[2],
 							url: "https://discord.com/api/oauth2/authorize?client_id=960304445592309800&permissions=8&scope=applications.commands%20bot",
 						},
+						{
+							type: "BUTTON",
+							style: "LINK",
+							label: dialogue[3],
+							url: "https://github.com/lajbel/akanebot",
+						},
 					],
 				},
 				{
