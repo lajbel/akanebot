@@ -9,9 +9,7 @@ export default () =>
 
 			if (!cmd) return;
 
-			const dialogue = ( await import(`../lang/es/${interaction.data.name.toLowerCase()}.ts`));
-
-			console.log(dialogue)
+			const dialogue = (await import(`../lang/es/${interaction.data.name.toLowerCase()}.ts`)).default;
 			
 			cmd.run(interaction, dialogue);
 		}

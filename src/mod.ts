@@ -42,4 +42,4 @@ startServer();
 
 setInterval(() => {
 	fetch("http://akanebot.lajbel.repl.co");
-}, 5);
+}, 10000);
