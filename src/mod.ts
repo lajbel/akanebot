@@ -1,9 +1,13 @@
-import { Client, config, GatewayIntents } from "../deps.ts";
+import { Client, config, GatewayIntents, ReplDB } from "../deps.ts";
 import { cmdlog, eventlog } from "./util/logger.ts";
 import { startServer } from "./server.ts";
 
 export const client = new Client();
 export const commands = new Map();
+
+export const db = new ReplDB(
+	Deno.env.get("REPLIT_DB_URL") || config().REPLIT_DB_URL
+);
 
 client.connect(Deno.env.get("DISCORD_TOKEN") || config().DISCORD_TOKEN, [
 	GatewayIntents.GUILDS,

@@ -1,3 +1,1 @@
-export default [
-	"Necesitas seleccionar un lenguaje.",
-]
+export default ["Lenguaje cambiado a Español!"];
