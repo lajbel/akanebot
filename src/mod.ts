@@ -1,4 +1,6 @@
-import { Client, config, GatewayIntents, Message } from "../deps.ts";
+import { Client, config, GatewayIntents } from "../deps.ts";
+import { cmdlog, eventlog } from "./util/logger.ts";
+import { startServer } from "./server.ts";
 
 export const client = new Client();
 export const commands = new Map();
@@ -12,7 +14,7 @@ for await (const file of Deno.readDir("src/events")) {
 	import(`./events/${file.name}`).then((mod) => {
 		mod.default();
 
-		console.log(`Event loaded -> ${file.name.slice(0, -3)}`);
+		eventlog(`Event loaded -> ${file.name.slice(0, -3)}`);
 	});
 }
 
@@ -32,9 +34,11 @@ for await (const file of Deno.readDir("src/commands/")) {
 
 		commands.set(command.name, command);
 
-		console.log(`Command loaded -> ${command.name}`);
+		cmdlog(`Command loaded -> ${command.name}`);
 	});
 }
+
+startServer();
 
 setInterval(() => {
 	fetch("http://akanebot.lajbel.repl.co");
