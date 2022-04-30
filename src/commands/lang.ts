@@ -1,9 +1,9 @@
-import { Interaction } from "../../deps.ts";
 import { AkaneCommand } from "../types/command.ts";
 import { db } from "../mod.ts";
 
 const cmd: AkaneCommand = {
 	name: "lang",
+	category: "Core",
 	description: "Set my messages language",
 	options: [
 		{

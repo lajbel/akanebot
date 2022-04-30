@@ -1,15 +1,16 @@
 import { Client, config, GatewayIntents, ReplDB } from "../deps.ts";
+import { AkaneCommand } from "./types/command.ts";
 import { cmdlog, eventlog } from "./util/logger.ts";
 import { startServer } from "./server.ts";
 
 export const client = new Client();
-export const commands = new Map();
 
-export const db = new ReplDB(
-	Deno.env.get("REPLIT_DB_URL") || config().REPLIT_DB_URL
-);
+export const commands: Map<string, AkaneCommand> = new Map();
+export const components = new Map();
 
-client.connect(Deno.env.get("DISCORD_TOKEN") || config().DISCORD_TOKEN, [
+export const db = new ReplDB(Deno.env.get("REPLIT_DB_URL"));
+
+await client.connect(Deno.env.get("DISCORD_TOKEN"), [
 	GatewayIntents.GUILDS,
 	GatewayIntents.GUILD_MESSAGES,
 ]);
@@ -42,8 +43,16 @@ for await (const file of Deno.readDir("src/commands/")) {
 	});
 }
 
+for await (const file of Deno.readDir("src/components")) {
+	import(`./components/${file.name}`).then((mod) => {
+		const component = mod.default;
+
+		components.set(file.name.slice(0, -3), component);
+	});
+}
+
 startServer();
 
 setInterval(() => {
-	fetch("http://akanebot.lajbel.repl.co");
+	// fetch("http://akanebot.lajbel.repl.co");
 }, 10000);

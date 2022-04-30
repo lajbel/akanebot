@@ -5,6 +5,7 @@ export function startServer() {
 	const app = opine();
 
 	app.get("/", function (req, res) {
+		res.send("thanks");
 		console.log("Web Requested");
 	});
 

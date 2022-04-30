@@ -1,10 +1,19 @@
-import { Interaction } from "../../deps.ts";
 import { AkaneCommand } from "../types/command.ts";
+import { commands } from "../mod.ts";
 
 const cmd: AkaneCommand = {
 	name: "help",
+	category: "Core",
 	description: "Get info and help about me and my features",
 	run: (interaction, dialogue) => {
+		const commandCategories = Array.from(
+			new Set(
+				Array.from(commands.values())
+					.filter((c) => c.category !== "Apps")
+					.map((c) => c.category)
+			)
+		);
+
 		interaction.respond({
 			embeds: [
 				{
@@ -32,6 +41,12 @@ const cmd: AkaneCommand = {
 							label: dialogue[3],
 							url: "https://github.com/lajbel/akanebot",
 						},
+						{
+							type: "BUTTON",
+							style: "LINK",
+							label: dialogue[4],
+							url: "https://github.com/lajbel/akanebot",
+						},
 					],
 				},
 				{
@@ -39,13 +54,15 @@ const cmd: AkaneCommand = {
 					components: [
 						{
 							type: "SELECT",
-							placeholder: "Check some command",
-							customID: "commandselector",
+							placeholder: dialogue[5],
+							customID: "categoryselector",
 							options: [
-								{
-									label: "help",
-									value: "zzz",
-								},
+								...commandCategories.map((c) => {
+									return {
+										label: c!,
+										value: c!,
+									};
+								}),
 							],
 						},
 					],
