@@ -1,1 +1,4 @@
 run = "deno run --no-check --allow-net --allow-env --allow-read --allow-write src/mod.ts"
+
+[nix]
+channel = "stable-21_11"
