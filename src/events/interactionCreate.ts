@@ -7,6 +7,7 @@ export default () =>
 	client.on("interactionCreate", async (interaction: Interaction) => {
 		const langDB = await db.get("languages");
 		const lang = langDB[interaction.user.id] || "en";
+        const options = {};
 
 		if (interaction.isApplicationCommand()) {
 			const cmd: AkaneCommand = commands.get(interaction.data.name)!;
@@ -18,7 +19,11 @@ export default () =>
 				)
 			).default;
 
-			cmd.run(interaction, dialogue);
+            for (const commandOption of interaction.options) {
+				options[commandOption.name] = commandOption.value;
+			}
+
+			cmd.run(interaction, dialogue, options);
 		}
 
 		if (interaction.isMessageComponent()) {

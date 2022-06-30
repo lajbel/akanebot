@@ -2,3 +2,6 @@ run = "deno run --no-check --allow-net --allow-env --allow-read --allow-write sr
 
 [nix]
 channel = "stable-21_11"
+
+[languages.javascript.languageServer]
+start = [ "vscode-extensions.denoland.vscode-denor", "--stdio" ]

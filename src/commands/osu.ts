@@ -1,7 +1,7 @@
 import { AkaneCommand } from "../types/command.ts";
 import { Osu, config } from "../../deps.ts";
 
-const osu = new Osu(config().OSU_TOKEN);
+const osu = new Osu(config().OSU_TOKEN || Deno.env.get("OSU_TOKEN"));
 
 const cmd: AkaneCommand = {
 	name: "osu",
