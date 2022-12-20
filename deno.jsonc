@@ -1,18 +1,20 @@
 {
-	"lint": {
-		"rules": {
-			"tags": ["recommended"],
-			"include": ["ban-untagged-todo"],
-			"exclude": ["no-unused-vars"]
-		}
-	},
-	"fmt": {
-		"options": {
-			"useTabs": true,
-			"lineWidth": 160,
-			"indentWidth": 4,
-			"singleQuote": true,
-			"proseWrap": "preserve"
-		}
-	}
+    "lint": {
+        "rules": {
+            "tags": ["recommended"],
+            "include": ["ban-untagged-todo"],
+            "exclude": ["no-unused-vars"]
+        }
+    },
+    "fmt": {
+        "options": {
+            "useTabs": false,
+            "lineWidth": 160,
+            "indentWidth": 4,
+            "singleQuote": false
+        }
+    },
+    "tasks": {
+        "dev": "deno run --no-check --allow-net --allow-env --allow-read --allow-write src/mod.ts"
+    }
 }

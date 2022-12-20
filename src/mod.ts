@@ -1,7 +1,9 @@
-import { Client, config, GatewayIntents, ReplDB } from "../deps.ts";
-import { AkaneCommand } from "./types/command.ts";
+import type { AkaneCommand } from "./types.ts";
+
+import langs from "./langs.json" assert { type: "json" };
+
+import { Client, dotenv, GatewayIntents, ReplDB } from "../deps.ts";
 import { cmdlog, eventlog } from "./util/logger.ts";
-import { startServer } from "./server.ts";
 
 export const client = new Client();
 
@@ -10,49 +12,50 @@ export const components = new Map();
 
 export const db = new ReplDB(Deno.env.get("REPLIT_DB_URL"));
 
-await client.connect(Deno.env.get("DISCORD_TOKEN"), [
-	GatewayIntents.GUILDS,
-	GatewayIntents.GUILD_MESSAGES,
+// Connect client
+await client.connect(Deno.env.get("DISCORD_TOKEN") ?? dotenv().DISCORD_TOKEN, [
+    GatewayIntents.GUILDS,
+    GatewayIntents.GUILD_MESSAGES,
 ]);
 
+// Read and run all events
 for await (const file of Deno.readDir("src/events")) {
-	import(`./events/${file.name}`).then((mod) => {
-		mod.default();
+    import(`./events/${file.name}`).then((mod) => {
+        mod.default();
 
-		eventlog(`Event loaded -> ${file.name.slice(0, -3)}`);
-	});
+        eventlog(`Event loaded -> ${file.name.slice(0, -3)}`);
+    });
 }
 
+// Store command in commands map
 for await (const file of Deno.readDir("src/commands/")) {
-	import(`./commands/${file.name}`).then((mod) => {
-		const command = mod.default;
+    await import(`./commands/${file.name}`).then((mod) => {
+        const command = mod.default;
 
-		client.interactions.commands.create(
-			{
-				name: command.name,
-				type: command.type,
-				description: command.description,
-				options: command.options,
-			},
-			"951299637782933515"
-		);
+        commands.set(command.name, command);
 
-		commands.set(command.name, command);
-
-		cmdlog(`Command loaded -> ${command.name}`);
-	});
+        cmdlog(`Command loaded -> ${command.name}`);
+    });
 }
 
-for await (const file of Deno.readDir("src/components")) {
-	import(`./components/${file.name}`).then((mod) => {
-		const component = mod.default;
-
-		components.set(file.name.slice(0, -3), component);
-	});
+// Load all slash commands
+for await (const guild of client.guilds) {
+    for await (const command of commands.values()) {
+        client.interactions.commands.create(
+            {
+                name: command.name,
+                // @ts-ignore a
+                description: langs.en[command.description],
+            },
+            guild.id,
+        );
+    }
 }
 
-startServer();
+// for await (const file of Deno.readDir("src/components")) {
+// 	import(`./components/${file.name}`).then((mod) => {
+// 		const component = mod.default;
 
-setInterval(() => {
-	// fetch("http://akanebot.lajbel.repl.co");
-}, 10000);
+// 		components.set(file.name.slice(0, -3), component);
+// 	});
+// }

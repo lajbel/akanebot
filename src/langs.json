@@ -1,0 +1,23 @@
+{
+    "en": {
+        "cmd_help_description": "Show help of all commands or for one in speecific.",
+        "cmd_help_emb_title": "Akane Tsunemori - Help Center",
+        "cmd_help_emb_description": "Hi! I am Akane Tsunemori, Inspector in CID's Division 01.\n\n**Name:** 常守 朱 Tsunemori Akane\n**Age:** 20\n**Gender:** Female",
+        "cmd_help_invite_text": "Invite me to your server!",
+        "cmd_help_repository_text": "Repository",
+        "cmd_help_support_text": "Support",
+        "cmd_help_select_category_text": "Select a category",
+        "cmd_help_select_command_text": "Select a command",
+
+        "cmd_lang": "Language changed to English!",
+
+        "cmd_ping_description": "Pong!",
+        "cmd_ping_salute": "I'm here!"
+    },
+    "es": {
+        "cmd_help_description": "Muestra ayuda de todos los comandos o de uno en espepcifico.",
+
+        "cmd_ping_description": "Pong!",
+        "cmd_ping_salute": "Estoy aquí!"
+    }
+}
