@@ -17,11 +17,20 @@ const cmd: AkaneCommand = {
             coll[c.category] = cmds.filter((c2) => c2.category === c.category);
         });
 
-        console.log(coll);
-
         const embed = new Embed()
             .setTitle(dialogue.cmd_help_emb_title)
             .setDescription(dialogue.cmd_help_emb_description);
+
+        for (const category of Object.keys(coll)) {
+            const title = category;
+            let desc = "";
+
+            for (const cmd of coll[category]) {
+                desc += `\`${cmd.name}\` `;
+            }
+
+            embed.addField({ name: title, value: desc });
+        }
 
         if (ctx instanceof Message) {
             ctx.reply({

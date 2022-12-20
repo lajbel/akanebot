@@ -15,6 +15,7 @@
         }
     },
     "tasks": {
-        "dev": "deno run --no-check --allow-net --allow-env --allow-read --allow-write src/mod.ts"
+        "dev": "deno run --no-check --allow-net --allow-env --allow-read --allow-write src/mod.ts",
+        "db": "deno eval 'console.log(Deno.env.get(`REPLIT_DB_URL`))'"
     }
 }

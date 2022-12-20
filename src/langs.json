@@ -1,5 +1,7 @@
 {
     "en": {
+        "cmd_avatar_description": "See your or other user avatar",
+
         "cmd_help_description": "Show help of all commands or for one in speecific.",
         "cmd_help_emb_title": "Akane Tsunemori - Help Center",
         "cmd_help_emb_description": "Hi! I am Akane Tsunemori, Inspector in CID's Division 01.\n\n**Name:** 常守 朱 Tsunemori Akane\n**Age:** 20\n**Gender:** Female",
@@ -15,6 +17,8 @@
         "cmd_ping_salute": "I'm here!"
     },
     "es": {
+        "cmd_avatar_description": "Mira tu avatar o el de otra persona.",
+
         "cmd_help_description": "Muestra ayuda de todos los comandos o de uno en espepcifico.",
 
         "cmd_ping_description": "Pong!",
