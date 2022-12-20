@@ -2,7 +2,7 @@
 import { ApplicationCommandInteraction, ApplicationCommandPartial, Message } from "../deps.ts";
 
 export interface AkaneCommand extends ApplicationCommandPartial {
-    category?: string;
+    category: string;
     run: (
         ctx: Message | ApplicationCommandInteraction,
         dialogue: any,
