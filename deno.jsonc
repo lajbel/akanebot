@@ -5,7 +5,7 @@
     "lint": {
         "rules": {
             "include": ["ban-untagged-todo"],
-            "exclude": ["no-unused-vars", "no-implicit-any"]
+            "exclude": ["no-unused-vars", "no-explicit-any"]
         }
     },
     "fmt": {
