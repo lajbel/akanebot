@@ -1,6 +1,8 @@
 {
     "en": {
-        "cmd_avatar_description": "See your or other user avatar",
+        "cmd_avatar_description": "See your or other user avatar.",
+        "cmd_avatar_opt_user": "User to see avatar.",
+        "cmd_avatar_emb_description": "Avatar of:",
 
         "cmd_help_description": "Show help of all commands or for one in speecific.",
         "cmd_help_emb_title": "Akane Tsunemori - Help Center",
@@ -11,7 +13,8 @@
         "cmd_help_select_category_text": "Select a category",
         "cmd_help_select_command_text": "Select a command",
 
-        "cmd_lang": "Language changed to English!",
+        "cmd_lang_description": "Change my language.",
+        "cmd_lang_opt_language": "Language to change.",
 
         "cmd_ping_description": "Pong!",
         "cmd_ping_salute": "I'm here!"
@@ -20,6 +23,9 @@
         "cmd_avatar_description": "Mira tu avatar o el de otra persona.",
 
         "cmd_help_description": "Muestra ayuda de todos los comandos o de uno en espepcifico.",
+
+        "cmd_lang_description": "Cambia mi idioma.",
+        "cmd_lang_opt_language": "Idioma a cambia.r",
 
         "cmd_ping_description": "Pong!",
         "cmd_ping_salute": "Estoy aquí!"

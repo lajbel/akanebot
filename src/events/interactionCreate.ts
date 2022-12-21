@@ -12,9 +12,14 @@ export default () =>
         // const options: any = {};
 
         if (interaction.isApplicationCommand()) {
+            const options: any = {};
             const cmd = commands.get(interaction.data.name)!;
             if (!cmd) return;
 
-            cmd.run(interaction, langs.en);
+            for (const commandOption of interaction.options) {
+                options[commandOption.name] = commandOption.value;
+            }
+
+            cmd.run(interaction, langs.en, options);
         }
     });

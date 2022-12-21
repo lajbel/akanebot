@@ -6,6 +6,7 @@ export interface AkaneCommand extends ApplicationCommandPartial {
     run: (
         ctx: Message | ApplicationCommandInteraction,
         dialogue: any,
-    ) => void;
+        options: any,
+    ) => void | Promise<void>;
     perms?: string[];
 }

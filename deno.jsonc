@@ -1,9 +1,11 @@
 {
+    "compilerOptions": {
+        "noImplicitAny": false
+    },
     "lint": {
         "rules": {
-            "tags": ["recommended"],
             "include": ["ban-untagged-todo"],
-            "exclude": ["no-unused-vars"]
+            "exclude": ["no-unused-vars", "no-implicit-any"]
         }
     },
     "fmt": {
