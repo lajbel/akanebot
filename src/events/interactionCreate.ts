@@ -2,14 +2,14 @@ import type { Interaction } from "../../deps.ts";
 
 import langs from "../langs.json" assert { type: "json" };
 
-import { client, commands, components } from "../mod.ts";
+import { client, commands } from "../mod.ts";
 import { db } from "../mod.ts";
 
 export default () =>
-    client.on("interactionCreate", (interaction: Interaction) => {
-        // const langDB = await db.get("languages");
-        // const lang = langDB[interaction.user.id] || "en";
-        // const options: any = {};
+    client.on("interactionCreate", async (interaction: Interaction) => {
+        const langDB = await db.get("languages");
+        const lang: string = langDB[interaction.user.id] || "en";
+        const options: any = {};
 
         if (interaction.isApplicationCommand()) {
             const options: any = {};
@@ -20,6 +20,6 @@ export default () =>
                 options[commandOption.name] = commandOption.value;
             }
 
-            cmd.run(interaction, langs.en, options);
+            cmd.run(interaction, langs[lang], options);
         }
     });

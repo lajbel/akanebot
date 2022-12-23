@@ -6,26 +6,32 @@
 
         "cmd_help_description": "Show help of all commands or for one in speecific.",
         "cmd_help_emb_title": "Akane Tsunemori - Help Center",
-        "cmd_help_emb_description": "Hi! I am Akane Tsunemori, Inspector in CID's Division 01.\n\n**Name:** 常守 朱 Tsunemori Akane\n**Age:** 20\n**Gender:** Female",
+        "cmd_help_emb_description": "Hi! I am Akane Tsunemori, Inspector in CID's Division 01'",
         "cmd_help_invite_text": "Invite me to your server!",
         "cmd_help_repository_text": "Repository",
         "cmd_help_support_text": "Support",
-        "cmd_help_select_category_text": "Select a category",
-        "cmd_help_select_command_text": "Select a command",
 
         "cmd_lang_description": "Change my language.",
         "cmd_lang_opt_language": "Language to change.",
+        "cmd_lang_sucess": "Language changed to English, hello!",
 
         "cmd_ping_description": "Pong!",
         "cmd_ping_salute": "I'm here!"
     },
     "es": {
         "cmd_avatar_description": "Mira tu avatar o el de otra persona.",
+        "cmd_avatar_opt_user": "Usuario a ver el avatar.",
 
         "cmd_help_description": "Muestra ayuda de todos los comandos o de uno en espepcifico.",
+        "cmd_help_emb_title": "Akane Tsunemori - Centro de ayuda",
+        "cmd_help_emb_description": "Hola, soy Akane Tsunemori, Inspectora ien la Division 01 del CID",
+        "cmd_help_invite_text": "Invitame a tu servidor",
+        "cmd_help_repository_text": "Repositorio",
+        "cmd_help_support_text": "Soporte",
 
         "cmd_lang_description": "Cambia mi idioma.",
-        "cmd_lang_opt_language": "Idioma a cambia.r",
+        "cmd_lang_opt_language": "Idioma a cambiar",
+        "cmd_lang_sucess": "Lenguaje cambiado a Español, hola!",
 
         "cmd_ping_description": "Pong!",
         "cmd_ping_salute": "Estoy aquí!"

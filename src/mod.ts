@@ -19,7 +19,7 @@ await client.connect(Deno.env.get("DISCORD_TOKEN") ?? dotenv().DISCORD_TOKEN, [G
 export const commands: Map<string, AkaneCommand> = new Map();
 export const components = new Map();
 
-export const db = new ReplDB(Deno.env.get("REPLIT_DB_URL"));
+export const db = new ReplDB(Deno.env.get("REPLIT_DB_URL") ?? dotenv().REPLIT_DB_URL);
 
 // Read and run all events
 for await (const file of Deno.readDir("src/events")) {

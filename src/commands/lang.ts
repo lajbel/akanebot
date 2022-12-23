@@ -1,10 +1,12 @@
 import { AkaneCommand } from "../types.ts";
 import { db } from "../mod.ts";
+import langs from "../langs.json" assert { type: "json" };
 
 const cmd: AkaneCommand = {
     name: "lang",
     category: "config",
     description: "cmd_lang_description",
+    perms: ["administrator"],
     options: [
         {
             name: "language",
@@ -23,17 +25,16 @@ const cmd: AkaneCommand = {
             ],
         },
     ],
-    run(ctx, dialogue, options) {
-        console.log(options);
+    async run(ctx, dialogue, options) {
+        const langDB = await db.get("languages");
 
-        //     const langDB = await db.get("languages");
+        langDB[ctx.guild?.id!] = options.language;
 
-        //     langDB[ctx.member?.guild.id!] = options.value;
+        await db.set("languages", langDB);
 
-        //     await db.set("languages", langDB);
+        const newLangMessage: string = langs[options.language].cmd_lang_sucess;
 
-        //     ctx.reply("d");
-        //
+        ctx.reply(newLangMessage);
     },
 };
 
